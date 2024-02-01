@@ -1,0 +1,25 @@
+<%= simple_form_for @in_body do |f| %>
+
+  <% @users.each do |user| %>
+    <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
+  <% end %>
+
+  <%= f.input :weight, label: "Peso (Kg)" %>
+  <%= f.input :height, label: "Estatura (m)" %>
+  <%= f.input :age, label: "Edad" %>
+  <%= f.input :genre, label: "Género" %>
+  <%= f.input :date, label: "Fecha" %>
+  <%= f.input :body_water, label: "Agua corporal" %>
+  <%= f.input :protein_mass, label: "Proteína (Kg)" %>
+  <%= f.input :minerals_mass, label: "Minerales (Kg)" %>
+  <%= f.input :body_fat, label: "Grasa corporal (Kg)" %>
+  <%= f.input :lean_mass, label: "Masa magra (Kg)" %>
+  <%= f.input :mass_free_of_fat, label: "Masa libre de grasa (Kg)" %>
+  <%= f.input :muscle_mass, label: "Masa muscular (Kg)" %>
+  <%= f.input :right_arm, label: "Brazo derecho (Kg)" %>
+  <%= f.input :left_arm, label: "Brazo izquierdo" %>
+  <%= f.input :trunk, label: "Tronco" %>
+  <%= f.input :right_leg, label: "Pierna izquierda" %>
+  <%= f.input :left_leg, label: "Pierna derecha" %>
+  <%= f.submit "Añadir", class: "btn btn-primary" %>
+<% end %>

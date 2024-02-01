@@ -13,10 +13,11 @@
   <body>
     <%# Render Nutritionist Sidebar %>
     <% if current_nutritionist %>
-      <%= render "shared/navbar" %>
+      <%= render "shared/nutritionist_sidebar" %>
 
     <%# Render Patiente/User Sidebar %>
     <% elsif current_user %>
+      <%= render "shared/user_sidebar" %>
 
     <%# Render HomePage %>
     <% else %>

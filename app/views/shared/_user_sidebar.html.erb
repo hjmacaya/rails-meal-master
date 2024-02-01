@@ -1,0 +1,12 @@
+<div class="container">
+
+  <div class="d-flex justify-content-center my-3 gap-2">
+    <button class="btn btn-primary"> Progreso </button>
+    <%= link_to "InBody", in_bodies_index_path, class: "btn btn-primary" %>
+    <button class="btn btn-primary"> Pautas </button>
+    <button class="btn btn-primary"> Meal helper </button>
+    <button class="btn btn-primary"> Personal info </button>
+    <%= link_to "Cerrar sesión", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger" %>
+  </div>
+
+</div>
