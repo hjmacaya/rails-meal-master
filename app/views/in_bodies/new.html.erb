@@ -1,5 +1,11 @@
 <%= simple_form_for @in_body do |f| %>
 
+  <%# User data %>
+  <%# Body composition analysis %>
+  <%# Muscle-Fat relation analysis %>
+  <%# Obesity analysis %>
+  <%# Segement Analysis %>
+
   <% @users.each do |user| %>
     <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
   <% end %>
