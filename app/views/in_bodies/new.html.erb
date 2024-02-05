@@ -1,31 +1,107 @@
 <%= simple_form_for @in_body do |f| %>
 
   <%# User data %>
+  <div class="row">
+    <h2>Información del paciente</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <% @users.each do |user| %>
+        <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
+      <% end %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :age, label: "Edad" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :height, label: "Estatura (m)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :weight, label: "Peso (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :genre, label: "Género" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :date, as: :date, label: "Fecha" %>
+    </div>
+  </div>
+  <%# User data %>
+
   <%# Body composition analysis %>
-  <%# Muscle-Fat relation analysis %>
-  <%# Obesity analysis %>
+  <div class="row">
+    <h2>Analisis composición corporal</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :body_water, label: "Agua corporal (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :protein_mass, label: "Proteína (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :minerals_mass, label: "Minerales (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :body_fat, label: "Grasa corporal (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :lean_mass, label: "Masa magra (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :mass_free_of_fat, label: "Masa libre de grasa (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :muscle_mass, label: "Masa muscular (Kg)" %>
+    </div>
+  </div>
+  <%# Body composition analysis %>
+
+  <%# Segement Analysis %>
+  <div class="row">
+    <h2>Análisis magro por segmentos</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :right_arm, label: "Brazo derecho (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :left_arm, label: "Brazo izquierdo" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :trunk, label: "Tronco" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :right_leg, label: "Pierna izquierda" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :left_leg, label: "Pierna derecha" %>
+    </div>
+    <div class="col-12 col-lg-6">
+
+    </div>
+  </div>
   <%# Segement Analysis %>
 
-  <% @users.each do |user| %>
-    <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
-  <% end %>
+  <%# Actions %>
+  <div class="d-flex flex-row gap-2">
+    <button class="btn btn-secondary rounded w-100">Volver</button>
+    <%= f.submit "Añadir", class: "btn btn-primary rounded w-100" %>
+  </div>
+  <%# Actions %>
 
-  <%= f.input :weight, label: "Peso (Kg)" %>
-  <%= f.input :height, label: "Estatura (m)" %>
-  <%= f.input :age, label: "Edad" %>
-  <%= f.input :genre, label: "Género" %>
-  <%= f.input :date, label: "Fecha" %>
-  <%= f.input :body_water, label: "Agua corporal" %>
-  <%= f.input :protein_mass, label: "Proteína (Kg)" %>
-  <%= f.input :minerals_mass, label: "Minerales (Kg)" %>
-  <%= f.input :body_fat, label: "Grasa corporal (Kg)" %>
-  <%= f.input :lean_mass, label: "Masa magra (Kg)" %>
-  <%= f.input :mass_free_of_fat, label: "Masa libre de grasa (Kg)" %>
-  <%= f.input :muscle_mass, label: "Masa muscular (Kg)" %>
-  <%= f.input :right_arm, label: "Brazo derecho (Kg)" %>
-  <%= f.input :left_arm, label: "Brazo izquierdo" %>
-  <%= f.input :trunk, label: "Tronco" %>
-  <%= f.input :right_leg, label: "Pierna izquierda" %>
-  <%= f.input :left_leg, label: "Pierna derecha" %>
-  <%= f.submit "Añadir", class: "btn btn-primary" %>
 <% end %>
