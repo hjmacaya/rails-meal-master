@@ -1,13 +1,21 @@
 <%= simple_form_for @in_body do |f| %>
 
+  <%# Display errors messages %>
+  <%= f.error_notification %>
+  <%# Display errors messages %>
+
   <%# User data %>
   <div class="row">
     <h2>Información del paciente</h2>
   </div>
   <div class="row">
     <div class="col-12 col-lg-6">
-      <% @users.each do |user| %>
-        <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
+      <% if @users %>
+        <% @users.each do |user| %>
+          <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
+        <% end %>
+      <% else %>
+        <%= f.input :user_id, label: "Selecciona un paciente", placeholder: "No hay usuarios" %>
       <% end %>
     </div>
     <div class="col-12 col-lg-6">
@@ -24,7 +32,7 @@
   </div>
   <div class="row">
     <div class="col-12 col-lg-6">
-      <%= f.input :genre, label: "Género" %>
+      <%= f.input :genre, collection: @genres, label: "Género" %>
     </div>
     <div class="col-12 col-lg-6">
       <%= f.input :date, as: :date, label: "Fecha" %>
@@ -38,7 +46,7 @@
   </div>
   <div class="row">
     <div class="col-12 col-lg-6">
-      <%= f.input :body_water, label: "Agua corporal (Kg)" %>
+      <%= f.input :body_water, label: "Agua corporal (Lt)" %>
     </div>
     <div class="col-12 col-lg-6">
       <%= f.input :protein_mass, label: "Proteína (Kg)" %>
@@ -76,23 +84,20 @@
       <%= f.input :right_arm, label: "Brazo derecho (Kg)" %>
     </div>
     <div class="col-12 col-lg-6">
-      <%= f.input :left_arm, label: "Brazo izquierdo" %>
+      <%= f.input :left_arm, label: "Brazo izquierdo (Kg)" %>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-lg-6">
-      <%= f.input :trunk, label: "Tronco" %>
+      <%= f.input :trunk, label: "Tronco (Kg)" %>
     </div>
     <div class="col-12 col-lg-6">
-      <%= f.input :right_leg, label: "Pierna izquierda" %>
+      <%= f.input :right_leg, label: "Pierna izquierda (Kg)" %>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-lg-6">
-      <%= f.input :left_leg, label: "Pierna derecha" %>
-    </div>
-    <div class="col-12 col-lg-6">
-
+      <%= f.input :left_leg, label: "Pierna derecha (Kg)" %>
     </div>
   </div>
   <%# Segement Analysis %>
