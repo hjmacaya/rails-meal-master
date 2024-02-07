@@ -29,6 +29,8 @@ class InBodiesController < ApplicationController
   end
 
   def update
+    @in_body.update(in_body_params)
+    redirect_to in_body_path(@in_body)
   end
 
   def destroy
