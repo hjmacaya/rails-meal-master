@@ -16,7 +16,7 @@
         <td>
           <%= link_to "Ver", in_body_path(row.id), class: "btn btn-success" %>
           <%= link_to "Editar", edit_in_body_path(row.id), class: "btn btn-warning" %>
-          <button class="btn btn-danger">Eliminar</button>
+          <%= link_to "Eliminar", in_body_path(row.id), data: {turbo_method: :delete, turbo_confirm: "¿Estas segur@?"}, class: "btn btn-danger" %>
           <%# <%= link_to "Editar", in_bodies_edit_path(row.id), class: "btn btn-primary" %>
           <%# <%= link_to "Eliminar", in_bodies_delete_path(row.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
         </td>
