@@ -4,11 +4,8 @@
     <h1> Lista de InBodys </h1>
   </div>
   <div class="col-6 text-end">
-    <%= link_to "Nuevo", in_bodies_new_path, class: "btn btn-primary" %>
+    <%= link_to "Nuevo", new_in_body_path, class: "btn btn-primary" %>
   </div>
 </div>
-<% @in_bodies.each do |in_body|  %>
-  <p><%= in_body.id %></p>
-<% end %>
 
 <%= render(InBody::TableComponent.new(data: @in_bodies)) %>

@@ -1,5 +1,5 @@
 class InBodiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index new show create]
+  skip_before_action :authenticate_user!, unless: :skip_authentication?
   before_action :set_users, only: %i[new create]
   before_action :set_genres, only: %i[new create]
 
@@ -24,6 +24,9 @@ class InBodiesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def in_body_params
@@ -36,5 +39,12 @@ class InBodiesController < ApplicationController
 
   def set_genres
     @genres = ["Masculino", "Femenino", "Otro", "Prefiero no decirlo"]
+  end
+
+  def skip_authentication?
+    if current_user
+      return true
+    end
+    return false
   end
 end

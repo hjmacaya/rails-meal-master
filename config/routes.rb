@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'in_bodies/index'
-  get 'in_bodies/show'
-  get 'in_bodies/new'
-  get 'in_bodies/create'
-  get 'in_body/index'
-  get 'in_body/show'
-  get 'in_body/new'
-  get 'in_body/create'
   # Users routes
   devise_for :users, controllers: {
     sessions: "users/sessions",
@@ -27,8 +19,7 @@ Rails.application.routes.draw do
   get "/user_home", to: "pages#user_home", as: :user_home
 
   # In Body routes
-  resources :in_bodies, only: %i[index show new create]
-  # resources :in_body, only: %i[index show new create
+  resources :in_bodies
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
