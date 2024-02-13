@@ -1,2 +1,79 @@
-<h1>InBodies#show</h1>
-<p>Find me in app/views/in_bodies/show.html.erb</p>
+<div class="row">
+  <div class="col-12 col-lg-4">
+
+    <%# Card with pacient info %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> <strong>Información del paciente</strong></h5>
+        <ul>
+          <li><strong>Nombre:</strong> <%= @in_body.user.email || "Sin nombre" %></li>
+          <li><strong>Edad:</strong> <%= @in_body.age %></li>
+          <li><strong>Altura:</strong> <%= @in_body.height %> m</li>
+          <li><strong>Peso:</strong> <%= @in_body.weight %> Kg</li>
+          <li><strong>Género:</strong> <%= @in_body.genre %></li>
+        </ul>
+      </div>
+    </div>
+    <%# Card with pacient info %>
+
+  </div>
+  <div class="col-12 col-lg-4">
+
+    <%# Card with body composition %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> <strong>Análisis composición corporal</strong></h5>
+        <ul>
+          <li><strong>Agua corporal:</strong> <%= @in_body.body_water %> Lt</li>
+          <li><strong>Masa proteína:</strong> <%= @in_body.protein_mass %> Kg</li>
+          <li><strong>Masa minerales:</strong> <%= @in_body.minerals_mass %> Kg</li>
+          <li><strong>Agua corporal:</strong> <%= @in_body.body_water %> Kg</li>
+          <li><strong>Grasa corporal:</strong> <%= @in_body.body_fat %> Kg</li>
+          <li><strong>Masa magra:</strong> <%= @in_body.lean_mass %> Kg</li>
+          <li><strong>Masa libre de grasa:</strong> <%= @in_body.mass_free_of_fat %> Kg</li>
+          <li><strong>Masa muscular:</strong> <%= @in_body.muscle_mass %> Kg</li>
+        </ul>
+      </div>
+    </div>
+    <%# Card with body composition %>
+
+  </div>
+
+  <div class="col-12 col-lg-4">
+
+    <%# Card with segment analysis %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> <strong>Análisis por segemento</strong></h5>
+        <ul>
+          <li><strong>Brazo derecho:</strong> <%= @in_body.right_arm %> Kg</li>
+          <li><strong>Brazo izquierdo:</strong> <%= @in_body.left_arm %> Kg</li>
+          <li><strong>Pierna derecha:</strong> <%= @in_body.right_leg %> Kg</li>
+          <li><strong>Pierna izquierda:</strong> <%= @in_body.left_leg %> Kg</li>
+          <li><strong>Tronco:</strong> <%= @in_body.trunk %> Kg</li>
+        </ul>
+      </div>
+    </div>
+    <%# Card with segment analysis %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-4">
+
+    <%# Card with indicators %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"> <strong>Análisis por segemento</strong></h5>
+        <ul>
+          <li><strong>IMC:</strong> <%= @in_body.imc %> Kg/m2</li>
+          <li><strong>Porcentaje grasa corporal</strong> <%= @in_body.percentage_body_fat %> %</li>
+          <li><strong>AEC</strong> <%= @in_body.aec %></li>
+        </ul>
+      </div>
+    </div>
+    <%# Card with indicators %>
+
+  </div>
+</div>
