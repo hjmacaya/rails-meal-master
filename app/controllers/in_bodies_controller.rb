@@ -1,7 +1,8 @@
 class InBodiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index new show create]
+  skip_before_action :authenticate_user!, unless: :skip_authentication?
   before_action :set_users, only: %i[new create]
   before_action :set_genres, only: %i[new create]
+  before_action :set_in_body, only: %i[show edit update destroy]
 
   def index
     @in_bodies = InBody.all
@@ -24,6 +25,19 @@ class InBodiesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @in_body.update(in_body_params)
+    redirect_to in_body_path(@in_body)
+  end
+
+  def destroy
+    @in_body.destroy
+    redirect_to in_body_path
+  end
+
   private
 
   def in_body_params
@@ -36,5 +50,13 @@ class InBodiesController < ApplicationController
 
   def set_genres
     @genres = ["Masculino", "Femenino", "Otro", "Prefiero no decirlo"]
+  end
+
+  def set_in_body
+    @in_body = InBody.find(params[:id])
+  end
+
+  def skip_authentication?
+    return current_user && true
   end
 end

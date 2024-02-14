@@ -1,0 +1,112 @@
+<%= simple_form_for @in_body do |f| %>
+
+  <%# Display errors messages %>
+  <%= f.error_notification %>
+  <%# Display errors messages %>
+
+  <%# User data %>
+  <div class="row">
+    <h2>Información del paciente</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <% if @users %>
+        <% @users.each do |user| %>
+          <%= f.input :user_id, collection: User.all.map{ |patient| [patient.email, patient.id] }, label: "Selecciona un paciente" %>
+        <% end %>
+      <% else %>
+        <%= f.input :user_id, label: "Selecciona un paciente", placeholder: "No hay usuarios" %>
+      <% end %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :age, label: "Edad" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :height, label: "Estatura (m)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :weight, label: "Peso (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :genre, collection: @genres, label: "Género" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :date, as: :date, label: "Fecha" %>
+    </div>
+  </div>
+  <%# User data %>
+
+  <%# Body composition analysis %>
+  <div class="row">
+    <h2>Analisis composición corporal</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :body_water, label: "Agua corporal (Lt)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :protein_mass, label: "Proteína (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :minerals_mass, label: "Minerales (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :body_fat, label: "Grasa corporal (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :lean_mass, label: "Masa magra (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :mass_free_of_fat, label: "Masa libre de grasa (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :muscle_mass, label: "Masa muscular (Kg)" %>
+    </div>
+  </div>
+  <%# Body composition analysis %>
+
+  <%# Segement Analysis %>
+  <div class="row">
+    <h2>Análisis magro por segmentos</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :right_arm, label: "Brazo derecho (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :left_arm, label: "Brazo izquierdo (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :trunk, label: "Tronco (Kg)" %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <%= f.input :right_leg, label: "Pierna izquierda (Kg)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <%= f.input :left_leg, label: "Pierna derecha (Kg)" %>
+    </div>
+  </div>
+  <%# Segement Analysis %>
+
+  <%# Actions %>
+  <div class="d-flex flex-row gap-2">
+    <button class="btn btn-secondary rounded w-100">Volver</button>
+    <%= f.submit "Guardar", class: "btn btn-primary rounded w-100" %>
+  </div>
+  <%# Actions %>
+
+<% end %>

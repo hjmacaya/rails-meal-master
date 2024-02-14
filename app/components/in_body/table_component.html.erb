@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Paciente</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |row| %>
+      <tr>
+        <td scope="row"><%= row.id %></td>
+        <td><%= row.date %></td>
+        <td><%= row.user.email %></td>
+        <td>
+          <%= link_to "Ver", in_body_path(row.id), class: "btn btn-success" %>
+          <%= link_to "Editar", edit_in_body_path(row.id), class: "btn btn-warning" %>
+          <%= link_to "Eliminar", in_body_path(row.id), data: {turbo_method: :delete, turbo_confirm: "¿Estas segur@?"}, class: "btn btn-danger" %>
+          <%# <%= link_to "Editar", in_bodies_edit_path(row.id), class: "btn btn-primary" %>
+          <%# <%= link_to "Eliminar", in_bodies_delete_path(row.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
